@@ -15,7 +15,7 @@ func ConvertToString(src string, srcCode string, tagCode string) string {
 	return result
 }
 
-func getTimeStap() string {
+func GetTimeStap() string {
 	msec := time.Now().UnixNano() / 1e9
 	return strconv.FormatInt(msec, 10) //时间戳
 }
