@@ -1,7 +1,10 @@
 package util
 
-import "github.com/axgle/mahonia"
-
+import (
+	"github.com/axgle/mahonia"
+	"strconv"
+	"time"
+)
 
 func ConvertToString(src string, srcCode string, tagCode string) string {
 	srcCoder := mahonia.NewDecoder(srcCode)
@@ -10,4 +13,9 @@ func ConvertToString(src string, srcCode string, tagCode string) string {
 	_, cdata, _ := tagCoder.Translate([]byte(srcResult), true)
 	result := string(cdata)
 	return result
+}
+
+func getTimeStap() string {
+	msec := time.Now().UnixNano() / 1e9
+	return strconv.FormatInt(msec, 10) //时间戳
 }
