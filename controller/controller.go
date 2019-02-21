@@ -82,5 +82,7 @@ func (ctrl *Controller) FirstAnalyzer() {
 			resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
 			ctrl.Channel.RespShares() <- resp
 		}
+		awg.Done()
 	})
+	awg.Wait()
 }
