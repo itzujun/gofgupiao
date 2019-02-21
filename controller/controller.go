@@ -22,14 +22,11 @@ type Controller struct {
 	Parser     analyzer.GenAnalyzer     //解析页函数
 }
 
-func NewController(startUrl string, downloader *downloader.Downloader,
-	channel *middleware.Channel, workPool *middleware.WorkPool, parser analyzer.GenAnalyzer) *Controller {
-	return &Controller{StartUrl: startUrl, Downloader: downloader,
-		Channel: channel, WorkPool: workPool, Parser: parser}
+func NewController(startUrl string) *Controller {
+	return &Controller{StartUrl: startUrl}
 }
 
 func (ctrl *Controller) Go() {
-
 	basic.Config.StartUrl = ctrl.StartUrl
 	basic.InitConfig()
 	ctrl.Downloader = downloader.NewDownloader()
@@ -41,11 +38,11 @@ func (ctrl *Controller) Go() {
 	if err != nil {
 		return
 	}
-	//basereq := basic.NewRequest(prereq, 0)
-	//ctrl.Channel.ReqChan() <- *basereq
 	fmt.Println("req:", prereq)
-
-	wg.Add(1)
+	wg.Add(2)
+	go ctrl.FirstDown()
+	go ctrl.FirstAnalyzer()
+	wg.Wait()
 
 }
 
@@ -74,7 +71,7 @@ func (ctrl *Controller) FirstAnalyzer() {
 		for res := range ctrl.Channel.RespChan() {
 			// 解析html页面
 			resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
-			ctrl.Channel.RespChan() <- resp
+			ctrl.Channel.RespShares() <- resp
 		}
 	})
 }
