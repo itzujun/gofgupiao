@@ -43,7 +43,7 @@ func (ctrl *Controller) Go() {
 	fmt.Println("req---: ", prereq)
 	logger.Info("开始下载")
 
-	wg.Add(3)
+	wg.Add(2)
 	go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
 	wg.Wait()
@@ -54,7 +54,6 @@ func (ctrl *Controller) Go() {
 	for _, ch := range resp {
 		fmt.Println("ch:", ch)
 	}
-
 }
 
 func (ctrl *Controller) GoDowndetail() {
