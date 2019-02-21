@@ -43,8 +43,8 @@ func (ctrl *Controller) Go() {
 	fmt.Println("req---: ", prereq)
 	logger.Info("开始下载")
 
-	wg.Add(2)
-	go ctrl.FirstDown()
+	wg.Add(1)
+	//go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
 	wg.Wait()
 
@@ -73,7 +73,7 @@ func (ctrl *Controller) FirstDown() {
 }
 
 func (ctrl *Controller) FirstAnalyzer() {
-	fmt.Print("FirstAnalyzer")
+	fmt.Println("FirstAnalyzer")
 	defer wg.Done()
 	awg := new(sync.WaitGroup)
 	awg.Add(1)
