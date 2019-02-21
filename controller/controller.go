@@ -73,7 +73,8 @@ func (ctrl *Controller) FirstAnalyzer() {
 	ctrl.WorkPool.Pool(1, func() {
 		for res := range ctrl.Channel.RespChan() {
 			// 解析html页面
-			//ctrl.Parser.	(res.GetRes())
+			ctrl.Parser.	(res.GetRes())
+
 
 		}
 	})

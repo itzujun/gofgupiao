@@ -11,6 +11,7 @@ type Parser func(httpRes *http.Response) ([]string, []basic.Item)
 
 type GenAnalyzer interface {
 	AnalyzeHtml(httpRes *http.Response, parser Parser) ([]string, []basic.Item)
+	AnalyzeApi(httpRes *http.Response) string
 }
 
 type Analyzer struct {
