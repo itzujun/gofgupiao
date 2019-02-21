@@ -13,7 +13,7 @@ type Downloader struct {
 	client *http.Client
 }
 
-func NewDownloader() GenDownloader {
+func NewDownloader() *Downloader {
 	return &Downloader{&http.Client{}}
 }
 
