@@ -41,6 +41,8 @@ func (ctrl *Controller) Go() {
 	ctrl.Channel.ReqChan() <- *basereq
 
 	fmt.Println("req---: ", prereq)
+	logger.Info("开始下载")
+
 	wg.Add(2)
 	go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
@@ -49,16 +51,21 @@ func (ctrl *Controller) Go() {
 }
 
 func (ctrl *Controller) FirstDown() {
+	logger.Info("FirstDown...")
 	defer wg.Done()
 	dwg := new(sync.WaitGroup)
 	dwg.Add(1)
 	ctrl.WorkPool.Pool(1, func() {
 		for req := range ctrl.Channel.ReqChan() {
+			fmt.Println("-----111----")
 			res := ctrl.Downloader.Download(&req)
 			if res != nil {
+				fmt.Println("访问成功")
+				fmt.Println("访问成功:", req)
 				ctrl.Channel.RespChan() <- *res
 			}
 		}
+		fmt.Println("----222-----")
 		dwg.Done()
 	})
 	dwg.Wait()
