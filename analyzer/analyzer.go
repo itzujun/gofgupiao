@@ -10,24 +10,28 @@ import (
 type Parser func(httpRes *http.Response) ([]string, []basic.Item)
 
 type GenAnalyzer interface {
-	Analyze(httpRes *http.Response, parser Parser) ([]string, []basic.Item)
+	AnalyzeHtml(httpRes *http.Response, parser Parser) ([]string, []basic.Item)
 }
 
 type Analyzer struct {
-	linklist []string
-	itemlist []basic.Item
+	GenAnalyzer
 }
 
 func NewAnalyzer() GenAnalyzer {
-	return &Analyzer{
-		make([]string, 0),
-		make([]basic.Item, 0),
-	}
+	return new(Analyzer)
+}
+
+func Anaybase() {
 
 }
 
+//Api解析
+func (self *Analyzer) AnalyzeApi(httpRes *http.Response) string {
+	return "结果"
+}
+
 //用于解析页面
-func (self *Analyzer) Analyze(httpRes *http.Response, parser Parser) ([]string, []basic.Item) {
+func (self *Analyzer) AnalyzeHtml(httpRes *http.Response, parser Parser) ([]string, []basic.Item) {
 	defer httpRes.Body.Close()
 	if parser == nil {
 		panic("xxx")
