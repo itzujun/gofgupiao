@@ -3,6 +3,7 @@ package controller
 import (
 	"github.com/itzujun/gofgupiao/basic"
 	"github.com/itzujun/gofgupiao/downloader"
+	"github.com/itzujun/gofgupiao/middleware"
 	"sync"
 )
 
@@ -12,5 +13,5 @@ var logger basic.ConsoleLogger
 
 type Controller struct {
 	Downloader downloader.Downloader // 下载器
-	Analyzer
+	Channel    *middleware.Channel	//
 }
