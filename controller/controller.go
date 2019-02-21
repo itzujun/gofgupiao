@@ -43,10 +43,17 @@ func (ctrl *Controller) Go() {
 	fmt.Println("req---: ", prereq)
 	logger.Info("开始下载")
 
-	wg.Add(2)
+	wg.Add(3)
 	go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
+	go ctrl.GoDowndetail()
 	wg.Wait()
+
+}
+
+func (ctrl *Controller) GoDowndetail() {
+	defer wg.Done()
+	fmt.Println("GoDown...")
 
 }
 
@@ -56,14 +63,12 @@ func (ctrl *Controller) FirstDown() {
 	dwg := new(sync.WaitGroup)
 	dwg.Add(1)
 	go func() {
-		fmt.Println("-----111----")
 		req := <-ctrl.Channel.ReqChan()
 		res := ctrl.Downloader.Download(&req)
 		if res != nil {
 			fmt.Println("访问成功:", res)
 			ctrl.Channel.RespChan() <- *res
 		}
-		fmt.Println("----222-----")
 		dwg.Done()
 	}()
 	dwg.Wait()
@@ -80,13 +85,14 @@ func (ctrl *Controller) FirstAnalyzer() {
 		res := <-ctrl.Channel.RespChan()
 		resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
 		fmt.Println("解析结果:", resp)
-
-
-		ctrl.Channel.RespShares() <- resp
+		//ctrl.Channel.RespShares() <- resp
+		for ch := range resp {
+			fmt.Println("ch:", ch)
+		}
 		awg.Done()
 	}()
+
 	awg.Wait()
 	fmt.Println("end-----")
 	close(ctrl.Channel.RespShares())
-
 }
