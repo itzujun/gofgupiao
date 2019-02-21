@@ -73,11 +73,13 @@ func (ctrl *Controller) FirstDown() {
 }
 
 func (ctrl *Controller) FirstAnalyzer() {
+	fmt.Print("FirstAnalyzer")
 	defer wg.Done()
 	awg := new(sync.WaitGroup)
 	awg.Add(1)
 	ctrl.WorkPool.Pool(1, func() {
 		for res := range ctrl.Channel.RespChan() {
+			fmt.Print("for RespChan... ")
 			// 解析html页面
 			resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
 			ctrl.Channel.RespShares() <- resp

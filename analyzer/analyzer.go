@@ -1,6 +1,7 @@
 package analyzer
 
 import (
+	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/itzujun/gofgupiao/util"
 	"net/http"
@@ -36,6 +37,7 @@ func (self *Analyzer) AnalyzeApi(httpRes *http.Response) string {
 
 //用于解析页面
 func (self *Analyzer) AnalyzeHtml(httpRes *http.Response) []Shares {
+	fmt.Println("解析网页...")
 	defer httpRes.Body.Close()
 	sh := []Shares{}
 	doc, _ := goquery.NewDocumentFromReader(httpRes.Body)
