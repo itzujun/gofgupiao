@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="12c0843d-60b9-49c1-8175-acba42731a19" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/controller/controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/downloader/downloader.go" beforeDir="false" afterPath="$PROJECT_DIR$/downloader/downloader.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/controller.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            <state relative-caret-position="245">
+              <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
               <folding>
                 <element signature="e#20#119#0" expanded="true" />
               </folding>
@@ -46,17 +45,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/go/src/github.com/itzujun/gofgupiao/downloader/downloader.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="281">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/downloader/downloader.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+            <state relative-caret-position="107">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding>
                 <element signature="e#20#80#0" expanded="true" />
               </folding>
@@ -68,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/analyzer/analyzer.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="729">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#18#73#0" expanded="true" />
               </folding>
@@ -80,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/middleware/channel.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
               <folding>
                 <element signature="e#20#109#0" expanded="true" />
               </folding>
@@ -105,6 +104,7 @@
       <find>line</find>
       <find>StartUrl</find>
       <find>zuju</find>
+      <find>Downloader</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -131,8 +131,8 @@
         <option value="$PROJECT_DIR$/basic/request.go" />
         <option value="$PROJECT_DIR$/basic/response.go" />
         <option value="$PROJECT_DIR$/middleware/channel.go" />
-        <option value="$PROJECT_DIR$/controller/controller.go" />
         <option value="$PROJECT_DIR$/downloader/downloader.go" />
+        <option value="$PROJECT_DIR$/controller/controller.go" />
       </list>
     </option>
   </component>
@@ -166,6 +166,10 @@
               <item name="gofgupiao" type="b2602c69:ProjectViewProjectNode" />
               <item name="gofgupiao" type="462c0819:PsiDirectoryNode" />
               <item name="downloader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gofgupiao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -225,7 +229,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="648" y="152" width="1315" height="642" extended-state="0" />
+    <frame x="531" y="76" width="1315" height="642" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49846154" visible="true" weight="0.17131475" />
       <window_info id="Structure" order="1" sideWeight="0.50153846" side_tool="true" weight="0.17131475" />
@@ -401,7 +406,7 @@
     <entry file="file://$PROJECT_DIR$/middleware/channel.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#20#109#0" expanded="true" />
           </folding>
@@ -411,36 +416,36 @@
     <entry file="file://$PROJECT_DIR$/analyzer/analyzer.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#18#73#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/controller.go">
+    <entry file="file://$PROJECT_DIR$/downloader/downloader.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="107">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
           <folding>
-            <element signature="e#20#119#0" expanded="true" />
+            <element signature="e#20#80#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/go/src/github.com/itzujun/gofgupiao/downloader/downloader.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="281">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/downloader/downloader.go">
+    <entry file="file://$PROJECT_DIR$/controller/controller.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        <state relative-caret-position="245">
+          <caret line="30" column="22" lean-forward="true" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding>
-            <element signature="e#20#80#0" expanded="true" />
+            <element signature="e#20#119#0" expanded="true" />
           </folding>
         </state>
       </provider>

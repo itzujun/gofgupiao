@@ -29,6 +29,7 @@ func NewController(startUrl string, downloader downloader.Downloader,
 func (ctrl *Controller) Go() {
 	basic.Config.StartUrl = ctrl.StartUrl
 	basic.InitConfig()
+
 	ctrl.Downloader = downloader.NewDownloader()
 
 
