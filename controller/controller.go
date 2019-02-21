@@ -46,8 +46,14 @@ func (ctrl *Controller) Go() {
 	wg.Add(3)
 	go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
-	go ctrl.GoDowndetail()
 	wg.Wait()
+
+	SSS := ctrl.Channel.RespShares()
+	resp := <-SSS
+	fmt.Print("pppppppppppppp---------")
+	for _, ch := range resp {
+		fmt.Println("ch:", ch)
+	}
 
 }
 
@@ -85,7 +91,7 @@ func (ctrl *Controller) FirstAnalyzer() {
 		res := <-ctrl.Channel.RespChan()
 		resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
 		fmt.Println("解析结果:", resp)
-		//ctrl.Channel.RespShares() <- resp
+		ctrl.Channel.RespShares() <- resp
 		for _, ch := range resp {
 			fmt.Println("ch:", ch)
 		}
