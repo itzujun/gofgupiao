@@ -20,7 +20,7 @@ type Controller struct {
 	Parser     analyzer.Analyzer      //解析页函数
 }
 
-func NewController(startUrl string, downloader downloader.Downloader,
+func NewController(startUrl string, downloader *downloader.Downloader,
 	channel *middleware.Channel, workPool *middleware.WorkPool, parser analyzer.Analyzer) *Controller {
 	return &Controller{StartUrl: startUrl, Downloader: downloader,
 		Channel: channel, WorkPool: workPool, Parser: parser}
@@ -29,7 +29,9 @@ func NewController(startUrl string, downloader downloader.Downloader,
 func (ctrl *Controller) Go() {
 	basic.Config.StartUrl = ctrl.StartUrl
 	basic.InitConfig()
-
 	ctrl.Downloader = downloader.NewDownloader()
+	ctrl.Channel = middleware.NewChannel()
+	ctrl.WorkPool =middleware.WorkPool{}
+
 
 }
