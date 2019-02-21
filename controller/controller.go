@@ -82,6 +82,7 @@ func (ctrl *Controller) FirstAnalyzer() {
 			fmt.Print("for RespChan... ")
 			// 解析html页面
 			resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
+			fmt.Println("解析网页成功:", resp)
 			ctrl.Channel.RespShares() <- resp
 		}
 		awg.Done()
