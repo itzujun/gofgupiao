@@ -86,7 +86,7 @@ func (ctrl *Controller) FirstAnalyzer() {
 		resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
 		fmt.Println("解析结果:", resp)
 		//ctrl.Channel.RespShares() <- resp
-		for ch := range resp {
+		for _, ch := range resp {
 			fmt.Println("ch:", ch)
 		}
 		awg.Done()
