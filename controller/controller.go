@@ -44,24 +44,19 @@ func (ctrl *Controller) Go() {
 	go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
 	wg.Wait()
-
 	respshares := ctrl.Channel.RespShares()
 	resp := <-respshares
-
 	for _, ch := range resp {
 		fmt.Println("ch:", ch)
 	}
-
 }
 
 func (ctrl *Controller) FeedDown(task chan analyzer.Shares, chs []analyzer.Shares) { //添加任务
-
 	for _, req := range chs {
 		task <- req
 	}
 }
 
-//func (ctrl *Controller) DoDown(chs chan analyzer.Shares) { //执行任务
 func (ctrl *Controller) DoDown(ch chan analyzer.Shares) { //执行任务
 	for {
 		shares, ok := <-ch
@@ -84,30 +79,6 @@ func (ctrl *Controller) DoDown(ch chan analyzer.Shares) { //执行任务
 		info := ctrl.Parser.AnalyzeApi(resp.GetRes(), shares)
 		fmt.Println("info:", info)
 	}
-
-	//linkurl := "https://gupiao.baidu.com/api/stocks/stockdaybar?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=" +
-	//	info.GetLinkCode(sh) + "&step=3&start=&count=160&fq_type=no&timestamp=" + info.GetTimeStack()
-	//req, err := http.NewRequest("GET", linkurl, nil)
-	//resp, err := info.client.Do(req)
-	//if err != nil || resp.StatusCode != 200 {
-	//	fmt.Println("error:", err.Error())
-	//	return
-	//}
-	//respstream, _ := ioutil.ReadAll(resp.Body)
-	//recpmap := make(map[string]interface{})
-	//err = json.Unmarshal(respstream, &recpmap)
-	//data, ok := recpmap["mashData"]
-	//if ok == false { //停牌股票不包含数据
-	//	return
-	//}
-	//value, _ := data.([]interface{})
-	//val, _ := value[0].(map[string]interface{})
-	//kline, _ := val["kline"]
-	//if kVal, ok := kline.(map[string]interface{}); ok {
-	//	fmt.Println(sh.name, sh.code, kVal["open"], kVal["high"], kVal["open"], kVal["close"], kVal["volume"], kVal["preClose"])
-	//}
-	//fmt.Println("爬虫ok:", sh.name)
-
 }
 
 func (ctrl *Controller) GoDowndetail() {
@@ -135,7 +106,6 @@ func (ctrl *Controller) FirstDown() {
 }
 
 func (ctrl *Controller) FirstAnalyzer() {
-	fmt.Print("FirstAnalyzer")
 	defer wg.Done()
 	awg := new(sync.WaitGroup)
 	awg.Add(1)
@@ -147,6 +117,5 @@ func (ctrl *Controller) FirstAnalyzer() {
 		awg.Done()
 	}()
 	awg.Wait()
-	fmt.Println("end-----")
 	close(ctrl.Channel.RespShares())
 }
