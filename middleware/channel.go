@@ -1,18 +1,21 @@
 package middleware
 
 import (
+	"github.com/itzujun/gofgupiao/analyzer"
 	"github.com/itzujun/gofgupiao/basic"
 )
 
 type Channel struct {
-	reqpchan chan basic.Request  //请求
-	respchan chan basic.Response //结果
+	reqpchan  chan basic.Request  //请求
+	respchan  chan basic.Response //结果
+	sharechan chan []analyzer.Shares
 }
 
 func NewChannel() *Channel {
 	return &Channel{
 		make(chan basic.Request, basic.Config.RequestNum),
 		make(chan basic.Response, basic.Config.RequestNum),
+		make(chan []analyzer.Shares, 10),
 	}
 }
 
@@ -22,4 +25,8 @@ func (this *Channel) ReqChan() chan basic.Request {
 
 func (this *Channel) RespChan() chan basic.Response {
 	return this.respchan
+}
+
+func (this *Channel) RespShares() chan []analyzer.Shares {
+	return this.sharechan
 }
