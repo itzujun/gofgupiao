@@ -9,7 +9,7 @@ type config struct {
 	RequestMethod string            //爬虫方式
 }
 
-var Config *config = new(config{flag: true})
+var Config *config = &config{flag: true}
 
 func InitConfig() {
 	if Config.flag == false {
