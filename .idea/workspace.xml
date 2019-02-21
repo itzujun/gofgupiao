@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12c0843d-60b9-49c1-8175-acba42731a19" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/controller/controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.go" afterDir="false" />
-    </list>
+    <list default="true" id="12c0843d-60b9-49c1-8175-acba42731a19" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/controller.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="83" column="57" lean-forward="true" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+            <state relative-caret-position="132">
+              <caret line="95" column="1" lean-forward="true" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
               <folding>
                 <element signature="e#20#222#0" expanded="true" />
               </folding>
@@ -45,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://D:/Program Files (x86)/Go/src/net/http/request.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
+            <state relative-caret-position="200">
               <caret line="791" column="5" selection-start-line="791" selection-start-column="5" selection-end-line="791" selection-end-column="5" />
             </state>
           </provider>
@@ -82,8 +80,8 @@
       <find>Analyzer</find>
       <find>Done</find>
       <find>解析网页...</find>
-      <find>prereq</find>
       <find>AnalyzeHtml</find>
+      <find>prereq</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -231,7 +229,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5153846" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5153846" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -395,13 +393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files (x86)/Go/src/net/http/request.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="791" column="5" selection-start-line="791" selection-start-column="5" selection-end-line="791" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/go/src/github.com/itzujun/gofgupiao/middleware/channel.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -465,10 +456,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Program Files (x86)/Go/src/net/http/request.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="791" column="5" selection-start-line="791" selection-start-column="5" selection-end-line="791" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/controller.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="83" column="57" lean-forward="true" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+        <state relative-caret-position="132">
+          <caret line="95" column="1" lean-forward="true" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
           <folding>
             <element signature="e#20#222#0" expanded="true" />
           </folding>

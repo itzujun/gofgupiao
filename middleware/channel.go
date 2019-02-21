@@ -13,8 +13,10 @@ type Channel struct {
 
 func NewChannel() *Channel {
 	return &Channel{
-		make(chan basic.Request, basic.Config.RequestNum),
-		make(chan basic.Response, basic.Config.RequestNum),
+		//make(chan basic.Request, basic.Config.RequestNum),
+		make(chan basic.Request, 1),
+		//make(chan basic.Response, basic.Config.RequestNum),
+		make(chan basic.Response, 1),
 		make(chan []analyzer.Shares, 10),
 	}
 }
