@@ -5,12 +5,16 @@ import (
 	"net/http"
 )
 
+type GenDownloader interface {
+	Download(req *basic.Request) *basic.Response
+}
+
 type Downloader struct {
 	client *http.Client
 }
 
-func NewDownloader() *Downloader {
-	return &Downloader{}
+func NewDownloader() GenDownloader {
+	return &Downloader{&http.Client{}}
 }
 
 func (this *Downloader) Download(req *basic.Request) *basic.Response {

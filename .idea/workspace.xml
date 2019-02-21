@@ -136,11 +136,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="648" />
-    <option name="y" value="152" />
-    <option name="width" value="1315" />
-    <option name="height" value="642" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-127" />
+    <option name="y" value="51" />
+    <option name="width" value="1316" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
