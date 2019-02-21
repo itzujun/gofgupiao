@@ -13,11 +13,11 @@ var wg sync.WaitGroup
 var logger = basic.NewSimpleLogger() // 日志记录器
 
 type Controller struct {
-	StartUrl   string                //初始爬行Url
-	Downloader downloader.Downloader // 下载器
-	Channel    *middleware.Channel   //管道
-	WorkPool   *middleware.WorkPool  //工作池
-	Parser     analyzer.Analyzer     //解析页函数
+	StartUrl   string                 //初始爬行Url
+	Downloader *downloader.Downloader // 下载器
+	Channel    *middleware.Channel    //管道
+	WorkPool   *middleware.WorkPool   //工作池
+	Parser     analyzer.Analyzer      //解析页函数
 }
 
 func NewController(startUrl string, downloader downloader.Downloader,
@@ -31,6 +31,5 @@ func (ctrl *Controller) Go() {
 	basic.InitConfig()
 
 	ctrl.Downloader = downloader.NewDownloader()
-
 
 }
