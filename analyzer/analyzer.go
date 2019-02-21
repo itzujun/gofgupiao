@@ -49,7 +49,9 @@ func (self *Analyzer) AnalyzeHtml(httpRes *http.Response) []Shares {
 			recv := strings.Split(band, "(")
 			liCode := strings.Split(url, "/")
 			ApiCode := strings.Split(liCode[len(liCode)-1], ".")[0]
-			sh = append(sh, Shares{recv[0], recv[1], url, ApiCode})
+			if strings.HasPrefix(ApiCode, "sz300") {
+				sh = append(sh, Shares{recv[0], recv[1], url, ApiCode})
+			}
 		}
 	})
 	return sh

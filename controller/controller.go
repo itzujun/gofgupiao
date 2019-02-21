@@ -55,27 +55,19 @@ func (ctrl *Controller) FirstDown() {
 	defer wg.Done()
 	dwg := new(sync.WaitGroup)
 	dwg.Add(1)
-	//ctrl.WorkPool.Pool(1,
-	//	func() {
 	go func() {
-		//for req := range ctrl.Channel.ReqChan() {
 		fmt.Println("-----111----")
-		//res := ctrl.Downloader.Download(&req)
 		req := <-ctrl.Channel.ReqChan()
 		res := ctrl.Downloader.Download(&req)
 		if res != nil {
 			fmt.Println("访问成功:", res)
 			ctrl.Channel.RespChan() <- *res
 		}
-		//}
 		fmt.Println("----222-----")
 		dwg.Done()
 	}()
-	//})
 	dwg.Wait()
-
 	go func() {}()
-
 	close(ctrl.Channel.RespChan())
 }
 
@@ -84,22 +76,15 @@ func (ctrl *Controller) FirstAnalyzer() {
 	defer wg.Done()
 	awg := new(sync.WaitGroup)
 	awg.Add(1)
-	//ctrl.WorkPool.Pool(1,
 	go func() {
-		fmt.Println("len:", len(ctrl.Channel.RespChan()))
-		//for res := range ctrl.Channel.RespChan() {
-		fmt.Print("for RespChan ")
 		res := <-ctrl.Channel.RespChan()
-		//res.GetRes()
-		// 解析html页面
 		resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
-		fmt.Println("解析网页成功:", resp)
+		fmt.Println("解析结果:", resp)
+
+
 		ctrl.Channel.RespShares() <- resp
-		//}
-		fmt.Println("done")
 		awg.Done()
 	}()
-	fmt.Println("dddd")
 	awg.Wait()
 	fmt.Println("end-----")
 	close(ctrl.Channel.RespShares())
