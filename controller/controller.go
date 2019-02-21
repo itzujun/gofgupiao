@@ -85,7 +85,12 @@ func (ctrl *Controller) FirstAnalyzer() {
 			fmt.Println("解析网页成功:", resp)
 			ctrl.Channel.RespShares() <- resp
 		}
+		fmt.Println("done")
 		awg.Done()
 	})
+	fmt.Println("dddd")
 	awg.Wait()
+	fmt.Println("end-----")
+	close(ctrl.Channel.RespShares())
+
 }
