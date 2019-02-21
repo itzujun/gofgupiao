@@ -33,12 +33,14 @@ func (ctrl *Controller) Go() {
 	ctrl.Channel = middleware.NewChannel()
 	ctrl.WorkPool = middleware.NewWorkPool()
 	ctrl.Parser = analyzer.NewAnalyzer()
-
 	prereq, err := http.NewRequest(basic.Config.RequestMethod, basic.Config.StartUrl, nil)
 	if err != nil {
 		return
 	}
-	fmt.Println("req:", prereq)
+	basereq := basic.NewRequest(prereq, 0)
+	ctrl.Channel.ReqChan() <- *basereq
+
+	fmt.Println("req---: ", prereq)
 	wg.Add(2)
 	go ctrl.FirstDown()
 	go ctrl.FirstAnalyzer()
