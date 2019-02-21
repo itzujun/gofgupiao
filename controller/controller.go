@@ -78,8 +78,9 @@ func (ctrl *Controller) FirstAnalyzer() {
 	awg := new(sync.WaitGroup)
 	awg.Add(1)
 	ctrl.WorkPool.Pool(1, func() {
+		fmt.Println("len:", len(ctrl.Channel.RespChan()))
 		for res := range ctrl.Channel.RespChan() {
-			fmt.Print("for RespChan... ")
+			fmt.Print("for RespChan ")
 			// 解析html页面
 			resp := ctrl.Parser.AnalyzeHtml(res.GetRes())
 			fmt.Println("解析网页成功:", resp)
