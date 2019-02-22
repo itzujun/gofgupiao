@@ -66,7 +66,7 @@ func (ctrl *Controller) Go() {
 
 	////下载
 	go func() {
-		ctrl.WorkPool.Pool(2, func() {
+		ctrl.WorkPool.Pool(10, func() {
 			ch := <-shchan
 			fmt.Println("获取:", ch)
 			linkurl := "https://gupiao.baidu.com/api/stocks/stockdaybar?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=" +
