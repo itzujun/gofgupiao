@@ -57,20 +57,27 @@ func (ctrl *Controller) Go() {
 
 	wg.Add(2)
 	go func() {
+		defer wg.Done()
 		for _, ch := range resp {
 			shchan <- ch
 		}
-		wg.Done()
+		close(shchan)
 	}()
 
 	go func() {
 		ctrl.WorkPool.Pool(10, func() {
-			ch := <-shchan
-			res := ctrl.DownDetail(ch)
-			fmt.Println("res:", res)
+			for {
+				ch, ok := <-shchan
+				if ok == false {
+					break
+				}
+				res := ctrl.DownDetail(ch)
+				fmt.Println("res:", res)
+			}
+			wg.Done()
 		})
-		wg.Done()
 	}()
+
 	wg.Wait()
 	fmt.Println("下载结束---")
 }
