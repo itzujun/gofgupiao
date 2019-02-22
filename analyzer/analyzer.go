@@ -33,9 +33,11 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *re
 	recpmap := make(map[string]interface{})
 	err := json.Unmarshal(respstream, &recpmap)
 	data, ok := recpmap["mashData"]
+	fmt.Print("data:", data)
 	if err != nil || ok == false {
 		return shRes
 	}
+	fmt.Println("--------11111111===")
 	value, _ := data.([]interface{})
 	val, _ := value[0].(map[string]interface{})
 	kline, _ := val["kline"]
