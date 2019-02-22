@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="12c0843d-60b9-49c1-8175-acba42731a19" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/analyzer/analyzer.go" beforeDir="false" afterPath="$PROJECT_DIR$/analyzer/analyzer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/controller.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,14 +13,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/controller.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+            <state relative-caret-position="289">
+              <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
               <folding>
                 <element signature="e#20#258#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/go/src/github.com/itzujun/gofgupiao/analyzer/analyzer.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -33,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyzer/analyzer.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="98">
+              <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
               <folding>
                 <element signature="e#18#195#0" expanded="true" />
               </folding>
@@ -110,8 +120,8 @@
         <option value="$PROJECT_DIR$/middleware/channel.go" />
         <option value="$PROJECT_DIR$/fgupiao.go" />
         <option value="$PROJECT_DIR$/res/share.go" />
-        <option value="$PROJECT_DIR$/controller/controller.go" />
         <option value="$PROJECT_DIR$/analyzer/analyzer.go" />
+        <option value="$PROJECT_DIR$/controller/controller.go" />
       </list>
     </option>
   </component>
@@ -266,7 +276,7 @@
     <frame x="59" y="-8" width="1315" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49846154" visible="true" weight="0.1816733" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49846154" visible="true" weight="0.07250996" />
       <window_info id="Structure" order="1" sideWeight="0.50153846" side_tool="true" weight="0.17131475" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -358,13 +368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/src/github.com/itzujun/gofgupiao/analyzer/analyzer.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -488,6 +491,16 @@
     <entry file="file://$PROJECT_DIR$/res/share.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/analyzer/analyzer.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+          <folding>
+            <element signature="e#18#195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/middleware/workpool.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -495,22 +508,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/controller.go">
+    <entry file="file://$USER_HOME$/go/src/github.com/itzujun/gofgupiao/analyzer/analyzer.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-          <folding>
-            <element signature="e#20#258#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="162">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analyzer/analyzer.go">
+    <entry file="file://$PROJECT_DIR$/controller/controller.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="289">
+          <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
           <folding>
-            <element signature="e#18#195#0" expanded="true" />
+            <element signature="e#20#258#0" expanded="true" />
           </folding>
         </state>
       </provider>

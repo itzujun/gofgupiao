@@ -49,7 +49,6 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *re
 
 //用于解析页面
 func (self *Analyzer) AnalyzeHtml(httpRes *http.Response) []res.Shares {
-	fmt.Println("解析网页...")
 	defer httpRes.Body.Close()
 	sh := []res.Shares{}
 	doc, _ := goquery.NewDocumentFromReader(httpRes.Body)

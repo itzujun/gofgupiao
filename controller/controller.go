@@ -56,7 +56,6 @@ func (ctrl *Controller) Go() {
 	shchan := make(chan res.Shares, 10)
 
 	wg.Add(2)
-
 	go func() {
 		for _, ch := range resp {
 			shchan <- ch
@@ -64,21 +63,10 @@ func (ctrl *Controller) Go() {
 		wg.Done()
 	}()
 
-	////下载
 	go func() {
 		ctrl.WorkPool.Pool(10, func() {
 			ch := <-shchan
-			fmt.Println("获取:", ch)
-			linkurl := "https://gupiao.baidu.com/api/stocks/stockdaybar?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=" +
-				ch.GetLinkCode() + "&step=3&start=&count=160&fq_type=no&timestamp=" + util.GetTimeStap()
-			prereq, err := http.NewRequest(basic.Config.RequestMethod, linkurl, nil)
-			if err != nil {
-				fmt.Println("error:11", err.Error())
-				return
-			}
-			basereq := basic.NewRequest(prereq, 0)
-			resp := ctrl.Downloader.Download(basereq)
-			res := ctrl.Parser.AnalyzeApi(resp.GetRes(), ch)
+			res := ctrl.DownDetail(ch)
 			fmt.Println("res:", res)
 		})
 		wg.Done()
@@ -118,4 +106,19 @@ func (ctrl *Controller) FirstAnalyzer() {
 	}()
 	awg.Wait()
 	close(ctrl.Channel.RespShares())
+}
+
+func (ctrl *Controller) DownDetail(ch res.Shares) *res.SharesRes {
+	fmt.Println("获取:", ch)
+	linkurl := "https://gupiao.baidu.com/api/stocks/stockdaybar?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=" +
+		ch.GetLinkCode() + "&step=3&start=&count=160&fq_type=no&timestamp=" + util.GetTimeStap()
+	prereq, err := http.NewRequest(basic.Config.RequestMethod, linkurl, nil)
+	if err != nil {
+		fmt.Println("error:11", err.Error())
+		return nil
+	}
+	basereq := basic.NewRequest(prereq, 0)
+	resp := ctrl.Downloader.Download(basereq)
+	res := ctrl.Parser.AnalyzeApi(resp.GetRes(), ch)
+	return res
 }
