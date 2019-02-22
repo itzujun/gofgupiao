@@ -80,6 +80,7 @@
       <find>载结束---</find>
       <find>DoDown</find>
       <find>AnalyzeApi</find>
+      <find>222222222222</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -113,8 +114,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="364" />
-    <option name="y" value="50" />
+    <option name="x" value="436" />
+    <option name="y" value="87" />
     <option name="width" value="1316" />
     <option name="height" value="750" />
   </component>

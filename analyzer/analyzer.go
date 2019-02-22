@@ -31,7 +31,7 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *re
 	fmt.Print("222222222222---")
 	respstream, err := ioutil.ReadAll(httpResp.Body)
 	fmt.Println("respstream:", len(respstream))
-	fmt.Println("respstream:", respstream)
+	fmt.Println("respstream:", string(respstream))
 	if err != nil {
 		fmt.Print("error:", err.Error())
 	}
