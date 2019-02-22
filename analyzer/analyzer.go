@@ -29,9 +29,12 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *re
 	fmt.Println("解析Api...")
 	//shRes := res.SharesRes{}
 	shRes := new(res.SharesRes)
-	respstream, _ := ioutil.ReadAll(httpResp.Body)
+	respstream, err := ioutil.ReadAll(httpResp.Body)
+	if err != nil {
+		fmt.Print("error:", err.Error())
+	}
 	recpmap := make(map[string]interface{})
-	err := json.Unmarshal(respstream, &recpmap)
+	err = json.Unmarshal(respstream, &recpmap)
 	data, ok := recpmap["mashData"]
 	fmt.Print("data:", data)
 	if err != nil || ok == false {
