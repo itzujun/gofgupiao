@@ -27,12 +27,13 @@ func NewAnalyzer() GenAnalyzer {
 //Api解析
 func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *res.SharesRes {
 	fmt.Println("解析Api...")
-	//shRes := res.SharesRes{}
-	shRes := new(res.SharesRes)
+	shRes := &res.SharesRes{}
+	fmt.Print("222222222222---")
 	respstream, err := ioutil.ReadAll(httpResp.Body)
 	if err != nil {
 		fmt.Print("error:", err.Error())
 	}
+	fmt.Println("ok-----")
 	recpmap := make(map[string]interface{})
 	err = json.Unmarshal(respstream, &recpmap)
 	data, ok := recpmap["mashData"]
