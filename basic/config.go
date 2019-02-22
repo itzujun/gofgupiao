@@ -1,5 +1,5 @@
 package basic
-
+// 2019.02.22
 type config struct {
 	flag          bool
 	Name          string

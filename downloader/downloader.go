@@ -1,5 +1,5 @@
 package downloader
-
+// 2019.02.22
 import (
 	"github.com/itzujun/gofgupiao/basic"
 	"net/http"

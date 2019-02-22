@@ -1,5 +1,5 @@
 package res
-
+// 2019.02.22
 import "strings"
 
 type Shares struct {

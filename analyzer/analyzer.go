@@ -1,5 +1,5 @@
 package analyzer
-
+// 2019.02.22
 import (
 	"encoding/json"
 	"fmt"
