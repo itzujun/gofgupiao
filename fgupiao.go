@@ -10,5 +10,5 @@ func main() {
 	fmt.Println("url:", url)
 	ctrl := controller.NewController(url)
 	fmt.Print(ctrl)
-	//ctrl.Go()
+	ctrl.Go()
 }
