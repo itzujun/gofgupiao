@@ -69,8 +69,9 @@ func (ctrl *Controller) Go() {
 		ctrl.WorkPool.Pool(10, func() {
 			ch := <-shchan
 			fmt.Println("获取:", ch)
-			prereq, err := http.NewRequest(basic.Config.RequestMethod, basic.Config.StartUrl, nil)
+			prereq, err := http.NewRequest(basic.Config.RequestMethod, ch.Url, nil)
 			if err != nil {
+				fmt.Println("error:11", err.Error())
 				return
 			}
 			basereq := basic.NewRequest(prereq, 0)
