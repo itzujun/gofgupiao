@@ -33,9 +33,10 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *re
 	if err != nil {
 		fmt.Print("error:", err.Error())
 	}
-	fmt.Println("ok-----")
+
 	recpmap := make(map[string]interface{})
 	err = json.Unmarshal(respstream, &recpmap)
+	fmt.Println("recpmap:", recpmap)
 	data, ok := recpmap["mashData"]
 	fmt.Print("data:", data)
 	if err != nil || ok == false {
