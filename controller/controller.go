@@ -52,32 +52,32 @@ func (ctrl *Controller) Go() {
 	}
 
 	//下载---
-	var wg sync.WaitGroup
-	shchan := make(chan analyzer.Shares, 10)
-	wg.Add(2)
-	go func() {
-		for _, ch := range resp {
-			shchan <- ch
-		}
-		wg.Done()
-	}()
+	//var wg sync.WaitGroup
+	//shchan := make(chan analyzer.Shares, 10)
+	//wg.Add(2)
+	//go func() {
+	//	for _, ch := range resp {
+	//		shchan <- ch
+	//	}
+	//	wg.Done()
+	//}()
 
 	//下载
-	go func() {
-		ctrl.WorkPool.Pool(10, func() {
-			ch := <-shchan
-			prereq, err := http.NewRequest(basic.Config.RequestMethod, basic.Config.StartUrl, nil)
-			if err != nil {
-				return
-			}
-			basereq := basic.NewRequest(prereq, 0)
-			resp := ctrl.Downloader.Download(basereq)
-			res := ctrl.Parser.AnalyzeApi(resp.GetRes(), ch)
-			fmt.Println("res:", res)
-		})
-		wg.Done()
-	}()
-	wg.Wait()
+	//go func() {
+	//	ctrl.WorkPool.Pool(10, func() {
+	//		ch := <-shchan
+	//		prereq, err := http.NewRequest(basic.Config.RequestMethod, basic.Config.StartUrl, nil)
+	//		if err != nil {
+	//			return
+	//		}
+	//		basereq := basic.NewRequest(prereq, 0)
+	//		resp := ctrl.Downloader.Download(basereq)
+	//		res := ctrl.Parser.AnalyzeApi(resp.GetRes(), ch)
+	//		fmt.Println("res:", res)
+	//	})
+	//	wg.Done()
+	//}()
+	//wg.Wait()
 	fmt.Println("下载结束---")
 
 }
@@ -107,13 +107,6 @@ func (ctrl *Controller) DoDown(ch chan analyzer.Shares) { //执行任务
 		if resp.GetRes().StatusCode != 200 {
 			continue
 		}
-
-		//dwg := new(sync.WaitGroup)
-		//dwg.Add(2)
-		//ctrl.WorkPool.Pool(10, func() {
-		//	dwg.Done()
-		//})
-		//dwg.Wait()
 	}
 }
 

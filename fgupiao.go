@@ -1,13 +1,20 @@
 package main
 
 import (
-	"github.com/itzujun/gofgupiao/controller"
 	"fmt"
+	"github.com/itzujun/gofgupiao/controller"
 )
+
+//
+//import (
+//	"fmt"
+//	"github.com/itzujun/gofgupiao/controller"
+//)
 
 func main() {
 	url := "http://quote.eastmoney.com/stocklist.html"
 	fmt.Println("url:", url)
 	ctrl := controller.NewController(url)
-	ctrl.Go()
+	fmt.Print(ctrl)
+	//ctrl.Go()
 }
