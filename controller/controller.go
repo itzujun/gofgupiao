@@ -65,7 +65,7 @@ func (ctrl *Controller) Go() {
 	}()
 
 	go func() {
-		ctrl.WorkPool.Pool(10, func() {
+		ctrl.WorkPool.Pool(basic.Config.RequestNum, func() {
 			for {
 				ch, ok := <-shchan
 				if ok == false {

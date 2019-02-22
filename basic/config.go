@@ -20,7 +20,7 @@ func InitConfig() {
 		Config.Name = "gofgupiao"
 	}
 	if Config.RequestNum == 0 {
-		Config.RequestNum = 5
+		Config.RequestNum = 50
 	}
 	if Config.RequestMethod == "" {
 		Config.RequestMethod = "GET"
