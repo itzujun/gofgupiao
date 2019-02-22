@@ -4,33 +4,16 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
-	"github.com/itzujun/gofgupiao/analyzer"
+	"github.com/itzujun/gofgupiao/res"
 	"github.com/itzujun/gofgupiao/util"
 	"io/ioutil"
 	"net/http"
 	"strings"
 )
 
-//type Shares struct {
-//	Name    string
-//	Code    string
-//	Url     string
-//	ApiCode string
-//}
-//
-//type SharesRes struct {
-//	Name     string
-//	Code     string
-//	Open     string
-//	High     string
-//	Close    string
-//	Volume   string
-//	PreClose string
-//}
-
 type GenAnalyzer interface {
-	AnalyzeHtml(httpRes *http.Response) []Shares
-	AnalyzeApi(httpRes *http.Response, shares analyzer.Shares) SharesRes
+	AnalyzeHtml(httpRes *http.Response) []res.Shares
+	AnalyzeApi(httpRes *http.Response, shares res.Shares) res.SharesRes
 }
 
 type Analyzer struct {
@@ -38,12 +21,12 @@ type Analyzer struct {
 }
 
 func NewAnalyzer() GenAnalyzer {
-	return new(Analyzer)
+	return &Analyzer{}
 }
 
 //Api解析
-func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares analyzer.Shares) SharesRes {
-	shRes := SharesRes{}
+func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) res.SharesRes {
+	shRes := res.SharesRes{}
 	respstream, _ := ioutil.ReadAll(httpResp.Body)
 	recpmap := make(map[string]interface{})
 	err := json.Unmarshal(respstream, &recpmap)
@@ -56,16 +39,16 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares analyzer.Shares
 	kline, _ := val["kline"]
 	if kVal, ok := kline.(map[string]interface{}); ok {
 		fmt.Println(shares.Name, shares.Code, kVal["open"], kVal["high"], kVal["open"], kVal["close"], kVal["volume"], kVal["preClose"])
-		shRes = SharesRes{Name: shares.Name, Code: shares.Code}
+		shRes = res.SharesRes{Name: shares.Name, Code: shares.Code}
 	}
 	return shRes
 }
 
 //用于解析页面
-func (self *Analyzer) AnalyzeHtml(httpRes *http.Response) []Shares {
+func (self *Analyzer) AnalyzeHtml(httpRes *http.Response) []res.Shares {
 	fmt.Println("解析网页...")
 	defer httpRes.Body.Close()
-	sh := []Shares{}
+	sh := []res.Shares{}
 	doc, _ := goquery.NewDocumentFromReader(httpRes.Body)
 	doc.Find("div.quotebody li").Each(func(i int, s *goquery.Selection) {
 		band := s.Find("a").Text()
@@ -76,7 +59,7 @@ func (self *Analyzer) AnalyzeHtml(httpRes *http.Response) []Shares {
 			liCode := strings.Split(url, "/")
 			ApiCode := strings.Split(liCode[len(liCode)-1], ".")[0]
 			if strings.HasPrefix(ApiCode, "sz300") {
-				sh = append(sh, Shares{recv[0], recv[1], url, ApiCode})
+				sh = append(sh, res.Shares{recv[0], recv[1], url, ApiCode})
 			}
 		}
 	})

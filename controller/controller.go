@@ -6,6 +6,7 @@ import (
 	"github.com/itzujun/gofgupiao/basic"
 	"github.com/itzujun/gofgupiao/downloader"
 	"github.com/itzujun/gofgupiao/middleware"
+	"github.com/itzujun/gofgupiao/res"
 	"github.com/itzujun/gofgupiao/util"
 	"net/http"
 	"sync"
@@ -82,13 +83,9 @@ func (ctrl *Controller) Go() {
 
 }
 
-func (ctrl *Controller) FeedDown(task chan analyzer.Shares, chs []analyzer.Shares) { //添加任务
-	for _, req := range chs {
-		task <- req
-	}
-}
 
-func (ctrl *Controller) DoDown(ch chan analyzer.Shares) { //执行任务
+//func (ctrl *Controller) DoDown(ch chan analyzer.Shares) { //执行任务
+func (ctrl *Controller) DoDown(ch chan res.Shares) { //执行任务
 	for {
 		shares, ok := <-ch
 		if ok == false {
