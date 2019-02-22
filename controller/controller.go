@@ -52,36 +52,36 @@ func (ctrl *Controller) Go() {
 	}
 
 	//下载---
-	var wg sync.WaitGroup
-	shchan := make(chan res.Shares, 10)
+	//var wg sync.WaitGroup
+	//shchan := make(chan res.Shares, 10)
 
-	wg.Add(2)
-
-	go func() {
-		for _, ch := range resp {
-			shchan <- ch
-		}
-		wg.Done()
-	}()
-
-	//下载
-	go func() {
-		ctrl.WorkPool.Pool(10, func() {
-			ch := <-shchan
-			fmt.Println("获取:", ch)
-			prereq, err := http.NewRequest(basic.Config.RequestMethod, ch.Url, nil)
-			if err != nil {
-				fmt.Println("error:11", err.Error())
-				return
-			}
-			basereq := basic.NewRequest(prereq, 0)
-			resp := ctrl.Downloader.Download(basereq)
-			res := ctrl.Parser.AnalyzeApi(resp.GetRes(), ch)
-			fmt.Println("res:", res)
-		})
-		wg.Done()
-	}()
-	wg.Wait()
+	//wg.Add(2)
+	//
+	//go func() {
+	//	for _, ch := range resp {
+	//		shchan <- ch
+	//	}
+	//	wg.Done()
+	//}()
+	//
+	////下载
+	//go func() {
+	//	ctrl.WorkPool.Pool(10, func() {
+	//		ch := <-shchan
+	//		fmt.Println("获取:", ch)
+	//		prereq, err := http.NewRequest(basic.Config.RequestMethod, ch.Url, nil)
+	//		if err != nil {
+	//			fmt.Println("error:11", err.Error())
+	//			return
+	//		}
+	//		basereq := basic.NewRequest(prereq, 0)
+	//		resp := ctrl.Downloader.Download(basereq)
+	//		res := ctrl.Parser.AnalyzeApi(resp.GetRes(), ch)
+	//		fmt.Println("res:", res)
+	//	})
+	//	wg.Done()
+	//}()
+	//wg.Wait()
 	fmt.Println("下载结束---")
 }
 
