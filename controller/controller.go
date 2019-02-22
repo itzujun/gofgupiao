@@ -7,7 +7,6 @@ import (
 	"github.com/itzujun/gofgupiao/downloader"
 	"github.com/itzujun/gofgupiao/middleware"
 	"github.com/itzujun/gofgupiao/res"
-	"github.com/itzujun/gofgupiao/util"
 	"net/http"
 	"sync"
 )
@@ -55,7 +54,9 @@ func (ctrl *Controller) Go() {
 	//下载---
 	var wg sync.WaitGroup
 	shchan := make(chan res.Shares, 10)
+
 	wg.Add(2)
+
 	go func() {
 		for _, ch := range resp {
 			shchan <- ch
@@ -67,6 +68,7 @@ func (ctrl *Controller) Go() {
 	go func() {
 		ctrl.WorkPool.Pool(10, func() {
 			ch := <-shchan
+			fmt.Println("获取:", ch)
 			prereq, err := http.NewRequest(basic.Config.RequestMethod, basic.Config.StartUrl, nil)
 			if err != nil {
 				return
@@ -80,36 +82,6 @@ func (ctrl *Controller) Go() {
 	}()
 	wg.Wait()
 	fmt.Println("下载结束---")
-
-}
-
-//func (ctrl *Controller) DoDown(ch chan analyzer.Shares) { //执行任务
-func (ctrl *Controller) DoDown(ch chan res.Shares) { //执行任务
-	for {
-		shares, ok := <-ch
-		if ok == false {
-			break
-		}
-		fmt.Println("info", shares)
-		linkurl := "https://gupiao.baidu.com/api/stocks/stockdaybar?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=" +
-			shares.ApiCode + "&step=3&start=&count=160&fq_type=no&timestamp=" + util.GetTimeStap()
-		fmt.Println(linkurl)
-		req, err := http.NewRequest(basic.Config.RequestMethod, linkurl, nil)
-		if err != nil {
-			break
-		}
-		basereq := basic.NewRequest(req, 0)
-		resp := ctrl.Downloader.Download(basereq)
-		if resp.GetRes().StatusCode != 200 {
-			continue
-		}
-	}
-}
-
-func (ctrl *Controller) GoDowndetail() {
-	defer wg.Done()
-	fmt.Println("GoDown...")
-
 }
 
 func (ctrl *Controller) FirstDown() {
