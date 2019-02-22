@@ -26,25 +26,17 @@ func NewAnalyzer() GenAnalyzer {
 
 //Api解析
 func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) *res.SharesRes {
-	fmt.Println("解析Api...")
 	shRes := &res.SharesRes{}
-	fmt.Print("222222222222---")
 	respstream, err := ioutil.ReadAll(httpResp.Body)
-	fmt.Println("respstream:", len(respstream))
-	fmt.Println("respstream:", string(respstream))
 	if err != nil {
 		fmt.Print("error:", err.Error())
 	}
-
 	recpmap := make(map[string]interface{})
 	err = json.Unmarshal(respstream, &recpmap)
-	fmt.Println("recpmap:", recpmap)
 	data, ok := recpmap["mashData"]
-	fmt.Print("data:", data)
 	if err != nil || ok == false {
 		return shRes
 	}
-	fmt.Println("--------11111111===")
 	value, _ := data.([]interface{})
 	val, _ := value[0].(map[string]interface{})
 	kline, _ := val["kline"]
