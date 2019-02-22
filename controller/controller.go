@@ -6,7 +6,7 @@ import (
 	"github.com/itzujun/gofgupiao/basic"
 	"github.com/itzujun/gofgupiao/downloader"
 	"github.com/itzujun/gofgupiao/middleware"
-	"github.com/itzujun/gofgupiao/res"
+	//"github.com/itzujun/gofgupiao/res"
 	"net/http"
 	"sync"
 )
@@ -45,7 +45,6 @@ func (ctrl *Controller) Go() {
 	go ctrl.FirstAnalyzer()
 	wg.Wait()
 	respshares := ctrl.Channel.RespShares()
-
 	resp := <-respshares
 	for _, ch := range resp {
 		fmt.Println("ch:", ch)
