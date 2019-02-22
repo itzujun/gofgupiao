@@ -26,6 +26,7 @@ func NewAnalyzer() GenAnalyzer {
 
 //Api解析
 func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) res.SharesRes {
+	fmt.Println("解析Api...")
 	shRes := res.SharesRes{}
 	respstream, _ := ioutil.ReadAll(httpResp.Body)
 	recpmap := make(map[string]interface{})
@@ -37,6 +38,7 @@ func (self *Analyzer) AnalyzeApi(httpResp *http.Response, shares res.Shares) res
 	value, _ := data.([]interface{})
 	val, _ := value[0].(map[string]interface{})
 	kline, _ := val["kline"]
+	fmt.Println("kline:", kline)
 	if kVal, ok := kline.(map[string]interface{}); ok {
 		fmt.Println(shares.Name, shares.Code, kVal["open"], kVal["high"], kVal["open"], kVal["close"], kVal["volume"], kVal["preClose"])
 		shRes = res.SharesRes{Name: shares.Name, Code: shares.Code}
